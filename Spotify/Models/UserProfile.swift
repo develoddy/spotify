@@ -8,7 +8,7 @@ struct UserProfile: Codable {
     let externalUrls: ExternalUrls
     let followers: Followers
     let href, id: String
-    let images: [Image]
+    let images: [APIImage]
     let product, type, uri: String
 
     enum CodingKeys: String, CodingKey {
@@ -43,8 +43,4 @@ struct Followers: Codable {
     let total: Int
 }
 
-// MARK: - Image
-struct Image: Codable {
-    let url: String?
-    let height, width: Int?
-}
+
