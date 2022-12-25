@@ -38,6 +38,9 @@
 		B3EBE1E22955929600EB289D /* FeaturedPlaylistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1E12955929600EB289D /* FeaturedPlaylistsResponse.swift */; };
 		B3EBE1E42955A58700EB289D /* RecommendedGenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1E32955A58700EB289D /* RecommendedGenresResponse.swift */; };
 		B3EBE1E62955E0CE00EB289D /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1E52955E0CE00EB289D /* RecommendationsResponse.swift */; };
+		B3EBE1E92959060F00EB289D /* NewReleaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1E82959060F00EB289D /* NewReleaseCollectionViewCell.swift */; };
+		B3EBE1EB2959065800EB289D /* FeatredPplaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1EA2959065800EB289D /* FeatredPplaylistCollectionViewCell.swift */; };
+		B3EBE1ED2959069500EB289D /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1EC2959069500EB289D /* RecommendedTrackCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +78,9 @@
 		B3EBE1E12955929600EB289D /* FeaturedPlaylistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsResponse.swift; sourceTree = "<group>"; };
 		B3EBE1E32955A58700EB289D /* RecommendedGenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedGenresResponse.swift; sourceTree = "<group>"; };
 		B3EBE1E52955E0CE00EB289D /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
+		B3EBE1E82959060F00EB289D /* NewReleaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		B3EBE1EA2959065800EB289D /* FeatredPplaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatredPplaylistCollectionViewCell.swift; sourceTree = "<group>"; };
+		B3EBE1EC2959069500EB289D /* RecommendedTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		C410AD86A5323634F072408E /* Pods-Spotify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.release.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +158,7 @@
 		B3984F2F2951A20400272000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3EBE1E7295905B900EB289D /* Browse */,
 				B3984F212951A01100272000 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -208,6 +215,16 @@
 				B3984F472951AECD00272000 /* SearchResultsViewController.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		B3EBE1E7295905B900EB289D /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				B3EBE1E82959060F00EB289D /* NewReleaseCollectionViewCell.swift */,
+				B3EBE1EA2959065800EB289D /* FeatredPplaylistCollectionViewCell.swift */,
+				B3EBE1EC2959069500EB289D /* RecommendedTrackCollectionViewCell.swift */,
+			);
+			path = Browse;
 			sourceTree = "<group>";
 		};
 		C87AF34552BBEEDC28FC0D07 /* Frameworks */ = {
@@ -349,16 +366,19 @@
 				B3984F3E2951AE2300272000 /* WelcomeViewController.swift in Sources */,
 				B3984F422951AE7700272000 /* ProfileViewController.swift in Sources */,
 				B3984F4E2951AF8400272000 /* HapticsManager.swift in Sources */,
+				B3EBE1ED2959069500EB289D /* RecommendedTrackCollectionViewCell.swift in Sources */,
 				B3EBE1E42955A58700EB289D /* RecommendedGenresResponse.swift in Sources */,
 				B3984F5A2952F7CD00272000 /* AuthResponse.swift in Sources */,
 				B36690212954C8B700BABFBB /* NewReleasesResponse.swift in Sources */,
 				B3EBE1E62955E0CE00EB289D /* RecommendationsResponse.swift in Sources */,
 				B3EBE1E02955812700EB289D /* UserImage.swift in Sources */,
 				B3984F522951AFCA00272000 /* AudioTrack.swift in Sources */,
+				B3EBE1E92959060F00EB289D /* NewReleaseCollectionViewCell.swift in Sources */,
 				B3984F342951AD1900272000 /* TabBarViewController.swift in Sources */,
 				B3984F1B2951A00F00272000 /* HomeViewController.swift in Sources */,
 				B3984F3C2951AE0600272000 /* AuthViewController.swift in Sources */,
 				B3984F562951AFEC00272000 /* UserProfile.swift in Sources */,
+				B3EBE1EB2959065800EB289D /* FeatredPplaylistCollectionViewCell.swift in Sources */,
 				B3984F582951D49300272000 /* Extensions.swift in Sources */,
 				B3984F172951A00F00272000 /* AppDelegate.swift in Sources */,
 				B3984F542951AFDE00272000 /* Artist.swift in Sources */,
@@ -515,6 +535,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,6 +564,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
