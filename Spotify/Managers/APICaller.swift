@@ -39,7 +39,7 @@ final class APICaller {
     
     public func getNewReleases(completion: @escaping ((Result<NewReleasesResponsse, Error>)) -> Void ) {
         createRequest(
-            with: URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=2"),
+            with: URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=8"),
             type: .GET
         ) { request in
             let task = URLSession.shared.dataTask(with: request) { data, _, error in
@@ -97,8 +97,8 @@ final class APICaller {
                 do {
                      //let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     let result = try JSONDecoder().decode(RecommendationsResponse.self, from: data)
-                    print(result)
-                    //completion(.success(result))
+                    //print(result)
+                    completion(.success(result))
                 } catch {
                     print(error.localizedDescription)
                     completion(.failure(error))
