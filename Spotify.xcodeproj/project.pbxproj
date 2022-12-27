@@ -42,6 +42,8 @@
 		B3EBE1EB2959065800EB289D /* FeaturedPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1EA2959065800EB289D /* FeaturedPlaylistCollectionViewCell.swift */; };
 		B3EBE1ED2959069500EB289D /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1EC2959069500EB289D /* RecommendedTrackCollectionViewCell.swift */; };
 		B3EBE1EF29590A2300EB289D /* NewReleasesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1EE29590A2300EB289D /* NewReleasesCellViewModel.swift */; };
+		B3EBE1F1295B04CC00EB289D /* FeaturedPlaylistCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1F0295B04CC00EB289D /* FeaturedPlaylistCellViewModel.swift */; };
+		B3EBE1F3295B0D9C00EB289D /* RecommendedTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EBE1F2295B0D9C00EB289D /* RecommendedTrackCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,8 @@
 		B3EBE1EA2959065800EB289D /* FeaturedPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3EBE1EC2959069500EB289D /* RecommendedTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3EBE1EE29590A2300EB289D /* NewReleasesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesCellViewModel.swift; sourceTree = "<group>"; };
+		B3EBE1F0295B04CC00EB289D /* FeaturedPlaylistCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistCellViewModel.swift; sourceTree = "<group>"; };
+		B3EBE1F2295B0D9C00EB289D /* RecommendedTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCellViewModel.swift; sourceTree = "<group>"; };
 		C410AD86A5323634F072408E /* Pods-Spotify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.release.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				B3EBE1EE29590A2300EB289D /* NewReleasesCellViewModel.swift */,
+				B3EBE1F0295B04CC00EB289D /* FeaturedPlaylistCellViewModel.swift */,
+				B3EBE1F2295B0D9C00EB289D /* RecommendedTrackCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -365,7 +371,9 @@
 				B3984F502951AFB700272000 /* Playlist.swift in Sources */,
 				B3984F4A2951AF2F00272000 /* AuthManager.swift in Sources */,
 				B3EBE1EF29590A2300EB289D /* NewReleasesCellViewModel.swift in Sources */,
+				B3EBE1F3295B0D9C00EB289D /* RecommendedTrackCellViewModel.swift in Sources */,
 				B3984F482951AECD00272000 /* SearchResultsViewController.swift in Sources */,
+				B3EBE1F1295B04CC00EB289D /* FeaturedPlaylistCellViewModel.swift in Sources */,
 				B3984F462951AEA100272000 /* PlayerListViewController.swift in Sources */,
 				B3984F3E2951AE2300272000 /* WelcomeViewController.swift in Sources */,
 				B3984F422951AE7700272000 /* ProfileViewController.swift in Sources */,

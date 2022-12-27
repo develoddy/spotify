@@ -9,19 +9,19 @@ import Foundation
 
 // MARK: - FeaturedPlaylistResponse
 struct FeaturedPlaylistResponse: Codable {
-    let message: String
-    let playlists: PlaylistsResponse
+    let message: String?
+    let playlists: PlaylistsResponse?
 }
 
 // MARK: - PlaylistsResponse
 struct PlaylistsResponse: Codable {
-    let href: String
-    let items: [Playlist]
-    let limit: Int
-    let next: String
-    let offset: Int
+    let href: String?
+    let items: [Playlist]?
+    let limit: Int?
+    let next: String?
+    let offset: Int?
     let previous: String?
-    let total: Int
+    let total: Int?
 }
 
 
