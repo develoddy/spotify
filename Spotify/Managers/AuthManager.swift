@@ -116,13 +116,13 @@ final class AuthManager {
             // Refresh
             refreshIfNeeded { [weak self] succes in
                 if let token = self?.accessToken, succes {
-                    //print("withValidToken if Token: \(token)")
+                    print("withValidToken if Token: \(token)")
                     completion(token)
                 }
                 
             }
         } else if let token = accessToken {
-            //print("withValidToken ele Token: \(token)")
+            print("withValidToken else Token: \(token)")
             completion(token)
         }
     }
@@ -197,7 +197,7 @@ final class AuthManager {
     }
     
     private func cacheToken(result: AuthResponse) {
-        //print("cacheToken Token: \(result.accessToken)")
+        print("cacheToken Token: \(result.accessToken)")
         UserDefaults.standard.setValue(result.accessToken, forKey: "access_token")
         if let refreshToken = result.refreshToken {
             UserDefaults.standard.setValue(refreshToken, forKey: "refresh_token")
