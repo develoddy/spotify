@@ -83,7 +83,6 @@ class HomeViewController: UIViewController {
         group.enter()
         group.enter()
         group.enter()
-        print("Start fetching data")
         
         var newReleases: NewReleasesResponsse?
         var featuredPlayList: FeaturedPlaylistResponse?

@@ -21,23 +21,23 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
                 top: 2,
                 leading: 2,
                 bottom: 2,
-                trailing: 2
+                trailing: 7
             )
             
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),
-                    heightDimension: .absolute(180)),
+                    heightDimension: .absolute(150)),
                 subitem: item,
                 count: 2
             )
             
-            /*group.contentInsets = NSDirectionalEdgeInsets(
+            group.contentInsets = NSDirectionalEdgeInsets(
                 top: 10,
                 leading: 0,
                 bottom: 10,
                 trailing: 0
-            )*/
+            )
             
             return NSCollectionLayoutSection(group: group)
         })
@@ -51,7 +51,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         view.addSubview(collectionView)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(GenreCollectionViewCell.self, forCellWithReuseIdentifier: GenreCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .systemBackground
@@ -85,8 +85,13 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .systemGreen
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: GenreCollectionViewCell.identifier,
+            for: indexPath
+        ) as? GenreCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.configure(with: "Rock")
         return cell
     }
 }
