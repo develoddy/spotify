@@ -13,6 +13,12 @@ struct FeaturedPlaylistResponse: Codable {
     let playlists: PlaylistsResponse?
 }
 
+// MARK: - CategoryPlaylistResponse
+struct CategoryPlaylistResponse: Codable {
+    let message: String?
+    let playlists: PlaylistsResponse?
+}
+
 // MARK: - PlaylistsResponse
 struct PlaylistsResponse: Codable {
     let href: String?
