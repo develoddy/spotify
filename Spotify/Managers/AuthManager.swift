@@ -116,13 +116,13 @@ final class AuthManager {
             // Refresh
             refreshIfNeeded { [weak self] succes in
                 if let token = self?.accessToken, succes {
-                    print("withValidToken if Token: \(token)")
+                    //print("withValidToken if Token: \(token)")
                     completion(token)
                 }
                 
             }
         } else if let token = accessToken {
-            print("withValidToken else Token: \(token)")
+            //print("withValidToken else Token: \(token)")
             completion(token)
         }
     }

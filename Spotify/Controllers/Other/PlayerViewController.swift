@@ -1,7 +1,17 @@
 import UIKit
+import SDWebImage
+
+protocol PlayerViewControllerDelegate: AnyObject {
+    func didTapPlayPause()
+    func didTapForward()
+    func didTapBackward()
+    func didSlideSlider(_ value: Float)
+}
 
 class PlayerViewController: UIViewController {
     
+    weak var dataSource: PlayerDataSource?
+    weak var delegate: PlayerViewControllerDelegate?
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -19,6 +29,15 @@ class PlayerViewController: UIViewController {
         view.addSubview(controlsView)
         controlsView.delegate = self
         configureBarButtons()
+        configure()
+    }
+    
+    private func configure() {
+        imageView.sd_setImage(with: dataSource?.imageURL, completed: nil)
+        controlsView.confiure(with: PlayerControlsViewViewModel(
+            title: dataSource?.songName,
+            subtitle: dataSource?.subtitle)
+        )
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,26 +63,33 @@ class PlayerViewController: UIViewController {
     }
     
     @objc private func didTapClose() {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapAction() {
         // Actions
     }
+    
+    func refreshUI() {
+        configure()
+    }
 }
 
 extension PlayerViewController: PlayerControlsViewDelegate {
+    
     func playerControlsViewDidTapPlayPauseButton(_ playerControlsView: PlayerControlsView) {
-        print("Pause")
+        delegate?.didTapPlayPause()
     }
     
     func playerControlsViewDidTapForwardButton(_ playerControlsView: PlayerControlsView) {
-        print("Forward")
+        delegate?.didTapForward()
     }
     
     func playerControlsViewDidTapBackButton(_ playerControlsView: PlayerControlsView) {
-        print("Back")
+        delegate?.didTapBackward()
     }
     
-    
+    func playerControlsView(_ playerControlsView: PlayerControlsView, didSlidelider value: Float) {
+        delegate?.didSlideSlider(value)
+    }
 }

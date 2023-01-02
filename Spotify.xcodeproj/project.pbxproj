@@ -159,6 +159,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		B382D5DE29632B3C00B1EB8E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		B3984F0A2951A00E00272000 = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +296,7 @@
 		B3984F3A2951ADC300272000 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B382D5DE29632B3C00B1EB8E /* Library */,
 				B3984F3B2951AE0600272000 /* AuthViewController.swift */,
 				B3984F3D2951AE2300272000 /* WelcomeViewController.swift */,
 				B3984F3F2951AE4E00272000 /* SettingsViewController.swift */,
