@@ -17,7 +17,6 @@ final class APICaller {
     // MARK: - Albums
     
     public func getAlbumDatails(for album: Album, completion: @escaping (Result<AlbumDetailsResponse, Error>) -> Void) {
-        print("api getAlbum: \(album.id)")
         createRequest(
             with: URL(string: Constants.baseAPIURL + "/albums/" + album.id),
             type: .GET
@@ -28,14 +27,53 @@ final class APICaller {
                     return
                 }
                 do {
-                    //let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    //print(result)
                     let result = try JSONDecoder().decode(AlbumDetailsResponse.self, from: data)
                     completion(.success(result))
                 } catch {
                     print(error.localizedDescription)
                     completion(.failure(error))
                 }
+            }
+            task.resume()
+        }
+    }
+    
+    public func getCurrentUserAlbums(completion: @escaping (Result<[Album], Error>) -> Void) {
+        createRequest(
+            with: URL(string: Constants.baseAPIURL + "/me/albums"),
+            type: .GET
+        ) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.faileedToGetData))
+                    return
+                }
+                do {
+                    let result = try JSONDecoder().decode(LibraryAlbumsResponse.self, from: data)
+                    completion(.success(result.items.compactMap({ $0.album }) ))
+                } catch {
+                    print(error.localizedDescription)
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    public func saveAlbum(album: Album, completion: @escaping (Bool) -> Void) {
+        createRequest(
+            with: URL(string: Constants.baseAPIURL + "/me/albums?ids=\(album.id)"),
+            type: .PUT
+        ) { baseRequest in
+            var request = baseRequest
+            request.setValue("application/json", forHTTPHeaderField: "content-type")
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let code = (response as? HTTPURLResponse)?.statusCode,
+                      error == nil else {
+                    completion(false)
+                    return
+                }
+                completion(code == 200)
             }
             task.resume()
         }
@@ -414,6 +452,7 @@ final class APICaller {
         case GET
         case POST
         case DELETE
+        case PUT
     }
     
     private func createRequest(

@@ -69,6 +69,59 @@ class AlbumViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        fetchData()
+        configureNavigationItem()
+    }
+    
+    func configureNavigationItem() {
+        confireColorNavigation()
+        //setupLeftNavItems()
+        setupRightNavItems()
+    }
+    
+    func confireColorNavigation() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
+    
+    // NAV ITEMS
+    func setupLeftNavItems() {
+        /*let followButton = UIButton(type: .system)
+        followButton.setTitle("App", for: .normal)
+        followButton.titleLabel?.font = .systemFont(ofSize: 26, weight: .black )
+        followButton.tintColor = Constants.Color.black
+        followButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: followButton)*/
+    }
+    
+    func setupRightNavItems() {
+        let buttonShared = UIBarButtonItem(
+            barButtonSystemItem: .action,
+            target: self,
+            action: #selector(didTapShare)
+        )
+        
+        let buttonAdd = UIBarButtonItem(
+            barButtonSystemItem: .bookmarks,
+            target: self,
+            action: #selector(didTapAdd)
+        )
+        navigationItem.rightBarButtonItems = [
+            buttonShared,
+            buttonAdd
+        ]
+    }
+    
+    
+    
+    func fetchData() {
         APICaller.shared.getAlbumDatails(for: album) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -86,11 +139,11 @@ class AlbumViewController: UIViewController {
                 }
             }
         }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .action,
-            target: self,
-            action: #selector(didTapShare))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = view.bounds
     }
 
     @objc private func didTapShare() {
@@ -107,9 +160,20 @@ class AlbumViewController: UIViewController {
         present(vc, animated: true)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
+    @objc private func didTapAdd() {
+        let actionShee = UIAlertController(title: album.name, message: "Action", preferredStyle: .actionSheet)
+        actionShee.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionShee.addAction(UIAlertAction(title: "Save Album", style: .default, handler: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            APICaller.shared.saveAlbum(album: strongSelf.album) { success in
+                print("Saved: \(success)")
+                if success {
+                    // Si todo va con exito entonces que publique la notificción
+                    NotificationCenter.default.post(name: .albumSaveNotification, object: nil)
+                }
+            }
+        }))
+        present(actionShee, animated: true)
     }
 }
 
