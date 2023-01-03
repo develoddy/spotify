@@ -15,7 +15,8 @@ struct AudioTrack: Codable {
     let durationMs: Int?
     let explicit: Bool?
     let externalUrls: ExternalUrls?
-    let href, id, name: String?
+    let href,name: String?
+    let id: String
     let popularity: Int?
     let previewUrl: String?
     
@@ -27,7 +28,8 @@ struct AudioTrack: Codable {
         case durationMs = "duration_ms"
         case explicit
         case externalUrls = "external_urls"
-        case href, id, name
+        case href, name
+        case id
         case popularity
         case previewUrl = "preview_url"
     }

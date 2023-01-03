@@ -4,6 +4,8 @@ class PlaylistViewController: UIViewController {
 
     private let playlist: Playlist
     
+    public var isOwner = false
+    
     private var collectionView: UICollectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewCompositionalLayout { _, _ -> NSCollectionLayoutSection? in
@@ -92,7 +94,60 @@ class PlaylistViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .action,
             target: self,
-            action: #selector(didTapShare))
+            action: #selector(didTapShare)
+        )
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func didLongPress(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else {
+            return
+        }
+        let touchPoint = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: touchPoint) else {
+            return
+        }
+        let trackToDelete = tracks[indexPath.row]
+        let actionSheet = UIAlertController(
+            title: trackToDelete.name,
+            message: "Would you like to remove this from the playlist?",
+            preferredStyle: .actionSheet
+        )
+        
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: .cancel,
+                handler: nil)
+        )
+        actionSheet.addAction(
+            UIAlertAction(
+                title: "Remove",
+                style: .destructive,
+                handler: { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            APICaller.shared.removeTrackFromList(track: trackToDelete, playlist: strongSelf.playlist) { success in
+                if success {
+                    DispatchQueue.main.async {
+                        // Delete row
+                        strongSelf.tracks.remove(at: indexPath.row)
+                        // Delete ModelView
+                        strongSelf.viewModels.remove(at: indexPath.row)
+                        // Reload collection
+                        strongSelf.collectionView.reloadData()
+                    }
+                } else {
+                    print("Failed to Removed")
+                }
+            }
+        }))
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
     @objc private func didTapShare() {
