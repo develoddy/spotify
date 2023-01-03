@@ -45,7 +45,6 @@ final class APICaller {
     // MARK: - Playlists
     
     public func getPlaylistDatails(for playlist: Playlist, completion: @escaping (Result<PlaylistDetailsResponse, Error>) -> Void) {
-        //print("api getPlaylist: \(playlist.id)")
         createRequest(
             with: URL(string: Constants.baseAPIURL + "/playlists/" + playlist.id),
             type: .GET
@@ -56,8 +55,6 @@ final class APICaller {
                     return
                 }
                 do {
-                    //let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    //print(result)
                     let result = try JSONDecoder().decode(PlaylistDetailsResponse.self, from: data)
                     completion(.success(result))
                 } catch {
@@ -67,6 +64,78 @@ final class APICaller {
             }
             task.resume()
         }
+    }
+    
+    public func getCurrentUserPlaylits(completion: @escaping (Result<[Playlist], Error>) -> Void) {
+        createRequest(
+            with: URL(string: Constants.baseAPIURL + "/me/playlists/?limit=20"),
+            type: .GET
+        ) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.faileedToGetData))
+                    return
+                }
+                do {
+                    let result = try JSONDecoder().decode(LibraryPlaylistsResponse.self, from: data)
+                    completion(.success(result.items))
+                } catch {
+                    print(error.localizedDescription)
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    public func createPlaylit(with name: String, completion: @escaping (Bool) -> Void) {
+        // Este objeto tiene la identificacion del usuario
+        // Para no causar fuga de memoria, incluimos [weak self]
+        getCuurrentUserProfile { [weak self] result in
+            switch result {
+            case .success(let profile):
+                let urlString = Constants.baseAPIURL + "/users/\(profile.id)/playlists"
+                self?.createRequest(with: URL(string: urlString), type: .POST, completion: { baseRequest in
+                    var request = baseRequest
+                    let json = [
+                        "name": name
+                    ]
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
+                    let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                        guard let data = data, error == nil else {
+                            completion(false)
+                            return
+                        }
+                        do {
+                            let _ = try JSONDecoder().decode(Playlist.self, from: data)
+                            completion(true)
+                        } catch {
+                            print(error.localizedDescription)
+                            completion(false)
+                        }
+                    }
+                    task.resume()
+                })
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func addTrackToPlaylist(
+        track: AudioTrack,
+        playlist: Playlist,
+        completion: @escaping (Bool) -> Void
+    ) {
+        
+    }
+    
+    public func removeTrackFromList(
+        track: AudioTrack,
+        playlist: Playlist,
+        completion: @escaping (Bool) -> Void
+    ) {
+        
     }
     
     
@@ -131,8 +200,6 @@ final class APICaller {
                 }
                     
                 do {
-                    //let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    //print(result)
                     let result = try JSONDecoder().decode(FeaturedPlaylistResponse.self, from: data)
                     completion(.success(result))
                 } catch {
@@ -206,8 +273,6 @@ final class APICaller {
                     return
                 }
                 do {
-                    //let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    //print(result)
                     let result = try JSONDecoder().decode(AllCategoriesResponse.self, from: data)
                     completion(.success(result.categories.items))
                 } catch {
@@ -229,8 +294,6 @@ final class APICaller {
                     return
                 }
                 do {
-                    //let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    //print(result)
                     let result = try JSONDecoder().decode(CategoryPlaylistResponse.self, from: data)
                     guard let playlists = result.playlists?.items else {
                         return
@@ -258,8 +321,6 @@ final class APICaller {
                     return
                 }
                 do {
-                    //let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    //print(result)
                     let result = try JSONDecoder().decode(SearchResultsResponse.self, from: data)
                     var searchResult: [SearchResult] = []
                     searchResult.append(contentsOf: result.tracks.items.compactMap({ .track(model: $0) }))

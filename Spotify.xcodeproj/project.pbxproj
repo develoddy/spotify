@@ -22,6 +22,11 @@
 		B382D5D8295EEAD500B1EB8E /* SearchResultSubtitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5D7295EEAD500B1EB8E /* SearchResultSubtitleTableViewCellViewModel.swift */; };
 		B382D5DB295EFC1700B1EB8E /* PlaybackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5DA295EFC1700B1EB8E /* PlaybackPresenter.swift */; };
 		B382D5DD295F18D900B1EB8E /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5DC295F18D900B1EB8E /* PlayerControlsView.swift */; };
+		B382D5E029632BC100B1EB8E /* LibraryPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5DF29632BC100B1EB8E /* LibraryPlaylistsViewController.swift */; };
+		B382D5E229632C1F00B1EB8E /* LibraryAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5E129632C1F00B1EB8E /* LibraryAlbumsViewController.swift */; };
+		B382D5E42963373000B1EB8E /* LibraryToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5E32963373000B1EB8E /* LibraryToggleView.swift */; };
+		B382D5E6296347D500B1EB8E /* LibraryPlaylistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5E5296347D500B1EB8E /* LibraryPlaylistsResponse.swift */; };
+		B382D5E829637C7300B1EB8E /* ActionLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B382D5E729637C7200B1EB8E /* ActionLabelView.swift */; };
 		B38BAAD729544AC2007F74C4 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38BAAD629544AC2007F74C4 /* SettingsModels.swift */; };
 		B3984F172951A00F00272000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3984F162951A00F00272000 /* AppDelegate.swift */; };
 		B3984F192951A00F00272000 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3984F182951A00F00272000 /* SceneDelegate.swift */; };
@@ -83,6 +88,11 @@
 		B382D5D7295EEAD500B1EB8E /* SearchResultSubtitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		B382D5DA295EFC1700B1EB8E /* PlaybackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackPresenter.swift; sourceTree = "<group>"; };
 		B382D5DC295F18D900B1EB8E /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
+		B382D5DF29632BC100B1EB8E /* LibraryPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistsViewController.swift; sourceTree = "<group>"; };
+		B382D5E129632C1F00B1EB8E /* LibraryAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAlbumsViewController.swift; sourceTree = "<group>"; };
+		B382D5E32963373000B1EB8E /* LibraryToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryToggleView.swift; sourceTree = "<group>"; };
+		B382D5E5296347D500B1EB8E /* LibraryPlaylistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistsResponse.swift; sourceTree = "<group>"; };
+		B382D5E729637C7200B1EB8E /* ActionLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLabelView.swift; sourceTree = "<group>"; };
 		B38BAAD629544AC2007F74C4 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		B3984F132951A00E00272000 /* Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3984F162951A00F00272000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +172,8 @@
 		B382D5DE29632B3C00B1EB8E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				B382D5DF29632BC100B1EB8E /* LibraryPlaylistsViewController.swift */,
+				B382D5E129632C1F00B1EB8E /* LibraryAlbumsViewController.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -218,6 +230,7 @@
 				B35C53CB295DFE3D00F7D0A0 /* SearchResultsResponse.swift */,
 				B35C53CD295E01F700F7D0A0 /* SearchResult.swift */,
 				B382D5CE295ECFBE00B1EB8E /* Artist.swift */,
+				B382D5E5296347D500B1EB8E /* LibraryPlaylistsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,6 +255,8 @@
 				B3EBE200295C9E7D00EB289D /* AlbumTrackCollectionViewCell.swift */,
 				B35C53C3295D93AA00F7D0A0 /* GenreCollectionViewCell.swift */,
 				B382D5DC295F18D900B1EB8E /* PlayerControlsView.swift */,
+				B382D5E32963373000B1EB8E /* LibraryToggleView.swift */,
+				B382D5E729637C7200B1EB8E /* ActionLabelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -455,9 +470,11 @@
 				B3EBE1F9295C3CC300EB289D /* PlaylistDetailsResponse.swift in Sources */,
 				B382D5D6295EE92000B1EB8E /* SearchReultSubtitleTableViewCell.swift in Sources */,
 				B3984F502951AFB700272000 /* Playlist.swift in Sources */,
+				B382D5E42963373000B1EB8E /* LibraryToggleView.swift in Sources */,
 				B3984F4A2951AF2F00272000 /* AuthManager.swift in Sources */,
 				B3EBE1EF29590A2300EB289D /* NewReleasesCellViewModel.swift in Sources */,
 				B3EBE203295CA15E00EB289D /* AlbumCollectionViewCellViewModel.swift in Sources */,
+				B382D5E829637C7300B1EB8E /* ActionLabelView.swift in Sources */,
 				B3EBE1F3295B0D9C00EB289D /* RecommendedTrackCellViewModel.swift in Sources */,
 				B3EBE1FF295C7F0600EB289D /* TitleHeaderCollectionReusableView.swift in Sources */,
 				B35C53CA295DD53C00F7D0A0 /* CategoryViewController.swift in Sources */,
@@ -479,6 +496,8 @@
 				B3EBE1E62955E0CE00EB289D /* RecommendationsResponse.swift in Sources */,
 				B3EBE205295CAD6800EB289D /* SearchResultsViewController.swift in Sources */,
 				B3EBE201295C9E7D00EB289D /* AlbumTrackCollectionViewCell.swift in Sources */,
+				B382D5E229632C1F00B1EB8E /* LibraryAlbumsViewController.swift in Sources */,
+				B382D5E6296347D500B1EB8E /* LibraryPlaylistsResponse.swift in Sources */,
 				B3EBE1E02955812700EB289D /* UserImage.swift in Sources */,
 				B3984F522951AFCA00272000 /* AudioTrack.swift in Sources */,
 				B3EBE1E92959060F00EB289D /* NewReleaseCollectionViewCell.swift in Sources */,
@@ -498,6 +517,7 @@
 				B3EBE1FD295C691300EB289D /* PlaylistHeaderViewViewModel.swift in Sources */,
 				B38BAAD729544AC2007F74C4 /* SettingsModels.swift in Sources */,
 				B3984F382951AD9400272000 /* LibraryViewController.swift in Sources */,
+				B382D5E029632BC100B1EB8E /* LibraryPlaylistsViewController.swift in Sources */,
 				B3984F192951A00F00272000 /* SceneDelegate.swift in Sources */,
 				B3EBE1F7295C29FF00EB289D /* AlbumDetailsResponse.swift in Sources */,
 				B3984F442951AE8100272000 /* PlayerViewController.swift in Sources */,
